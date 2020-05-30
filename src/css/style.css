@@ -9,12 +9,21 @@
 
 html {
   box-sizing: border-box;
-  font-size: 62.5%; }
-  @media only screen and (max-width: 68.75em) {
+  height: 100%;
+  width: 100%;
+  font-size: 62.5%;
+}
+  
+  @media only screen and (max-width: 600px) {
     html {
-      font-size: 50%; } }
+      font-size: 50%; } 
+  }
 
 body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   font-family: 'Raleway', sans-serif;
   font-weight: 400;
   line-height: 1.6;
@@ -24,22 +33,46 @@ body {
   background-repeat: no-repeat;
   min-height: calc(100vh - 2 * 4vw); }
 
+
+@media (max-width: 700px) {
+  .content-section {
+      padding: 20px 50px;
+      flex-direction: column;
+  }
+}
+
+.main-body {
+  flex: 1 0 auto;
+}
+
 .container {
-  max-width: 120rem;
-  margin: 4vw auto;
-  background-color: #fff;
-  border-radius: 6px;
-  overflow: hidden;
+  background: #ffffff;
+  padding: 20px;
+  border: 1px solid #dddddd;
+  border-radius: 20px;
+  margin: 10px;
   box-shadow: 0 2rem 6rem 0.5rem rgba(101, 90, 86, 0.2);
-  display: grid;
-  grid-template-rows: 10rem minmax(100rem, auto);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  /* grid-template-rows: 10rem minmax(100rem, auto);
   grid-template-columns: 1.1fr 2fr;
-  grid-template-areas: "head head head" "list recipe shopping"; }
-  @media only screen and (max-width: 68.75em) {
+  grid-template-areas: "head head head" "list recipe shopping";  */
+}
+  @media only screen and (max-width: 600px) {
     .container {
-      width: 100%;
-      margin: 0;
-      border-radius: 0; } }
+      padding: 20px 50px;
+      flex-direction: column;
+    } 
+  }
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+  
 
 .btn, .btn-small, .btn-small:link, .btn-small:visited {
   background-color: #3bd6c6;
@@ -75,51 +108,21 @@ body {
     width: 1.5rem;
     fill: currentColor; }
 
-.btn-inline {
-  color: #F59A83;
-  font-size: 1.2rem;
-  border: none;
-  background-color: #F9F5F3;
-  padding: .8rem 1.2rem;
+.btn-danger {
+  background-color: #EF9A9A;
   border-radius: 10rem;
+  border: none;
+  text-transform: uppercase;
+  color: #fff;
   cursor: pointer;
   display: flex;
   align-items: center;
   transition: all .2s; }
-  .btn-inline svg {
-    height: 1.5rem;
-    width: 1.5rem;
-    fill: currentColor;
-    margin: 0 .2rem; }
-  .btn-inline span {
-    margin: 0 .4rem; }
-  .btn-inline:hover {
-    color: #F48982;
-    background-color: #F2EFEE; }
-  .btn-inline:focus {
+  .btn-danger:hover {
+    transform: scale(1.05); }
+  .btn-danger:focus {
     outline: none; }
 
-.btn-tiny {
-  height: 1.75rem;
-  width: 1.75rem;
-  border: none;
-  background: none;
-  cursor: pointer; }
-  .btn-tiny svg {
-    height: 100%;
-    width: 100%;
-    fill: #F59A83;
-    transition: all .3s; }
-  .btn-tiny:focus {
-    outline: none; }
-  .btn-tiny:hover svg {
-    fill: #F48982;
-    transform: translateY(-1px); }
-  .btn-tiny:active svg {
-    fill: #F48982;
-    transform: translateY(0); }
-  .btn-tiny:not(:last-child) {
-    margin-right: .3rem; }
 
 .heading-2 {
   font-size: 1.8rem;
@@ -156,11 +159,11 @@ body {
     transform: rotate(360deg); } }
 
 .header {
-  grid-area: head;
+  /* grid-area: head; */
   background-color: #F9F5F3;
   display: flex;
   align-items: center;
-  justify-content: space-between; }
+  justify-content: center; }
   .header__logo {
     margin-left: 4rem;
     height: 4.5rem;
@@ -490,3 +493,75 @@ body {
   .shopping__item:hover .shopping__delete {
     opacity: 1;
     visibility: visible; }
+
+
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fefefe;
+  margin: 5% auto; 
+  padding: 15px;
+  border: 1px solid #888;
+  border-radius: 20px;
+  width: 60%; 
+}
+  .modal-content input[type=text], input[type=file], textarea {
+    width: 100%; /* Full width */
+    padding: 12px; /* Some padding */ 
+    border: 1px solid #ccc; /* Gray border */
+    border-radius: 4px; /* Rounded borders */
+    box-sizing: border-box; /* Make sure that padding and width stays in place */
+    margin-top: 6px; /* Add a top margin */
+    margin-bottom: 16px; /* Bottom margin */
+    resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+  }
+  .modal-content input[type=submit] {
+    text-align: center;
+    margin-top: 6px;
+    margin-bottom: 16px; 
+  }
+
+  @media only screen and (max-width: 600px) {
+    .modal-content {
+      width: 80%;
+    }
+  }
+  @media only screen and (max-width: 400px) {
+    .modal-content {
+      width: 90%;
+    }
+  }
+
+  
+
+/* The Close Button */
+.close {
+  display: inline-block;
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
