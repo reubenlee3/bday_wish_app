@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <header class="header">
+    <!-- <header class="header">
         <form class="search">
             <input type="text" class="search__field" placeholder="Search...">
             <button class="btn search__btn">
@@ -22,52 +22,60 @@
                 <span>Search</span>
             </button>
         </form>
+    </header> -->
 
-        <button class="btn" id="modal-content__button">Open Modal</button>
-
-        <!-- The Modal -->
-        <div id="modal-content__body" class="modal">
-            
-            <!-- Modal content -->
-            <div class="modal-content">
-                <form action="https://bday-wish-api.herokuapp.com/api/list/" method="post">
-                    <label for="title">Title of your Wish:</label>
-                    <input type="text" id="title" name="title">
-                    <label for="author">What's your name, cutie:</label>
-                    <input type="text" id="author" name="author">
-                    <label for="wish">Your wish:</label>
-                    <textarea id="subject" name="subject" placeholder="Write something.."></textarea>
-                    <label for="image">Image</label>
-                    <input type="file" id="image" name="image" accept="image/*">
-                    <div class="row">
-                        <button class="btn" type="submit" id="modal-content__submit" value="Submit">Submit</button>
-                        <a class="btn btn-danger" id="modal-content__close">Close</a>
-                    </div>
-                    
-                </form>
-            </div>
-
-        </div>
-    </header>
+    
+    
     
 
     <div class="main-body">
-        <div class="results">
-            <ul class="results__list">
-                <!-- Put search results here -->
-                <svg class="search__icon">
-                    <use href="img/icons.svg#icon-magnifying-glass"></use>
-                </svg>
-            </ul>
+        <div class="container small">
+            <form class="search">
+                <input type="text" class="search__field" placeholder="Search...">
+                <button class="btn search__btn">
+                    <svg class="search__icon">
+                        <use href="img/icons.svg#icon-magnifying-glass"></use>
+                    </svg>
+                </button>
+            </form>
+            <div class="results">
+                <ul class="results__list">
+                    <!-- Put search results here -->
+                    
+                </ul>
 
-            <div class="results__pages">
-                
-                <!--
-                Pagination for search results go here
-                -->
+                <div class="results__pages">
+                    
+                    <!--
+                    Pagination for search results go here
+                    -->
+                </div>
             </div>
         </div>
-        <div class="container">
+        
+        <div class="container big">
+            <button class="btn" id="modal-content__button">Write your wish!</button>
+
+            <!-- The Modal -->
+            <div id="modal-content__body" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <form action="https://bday-wish-api.herokuapp.com/api/list/" method="post">
+                        <label for="title">Title of your Wish:</label>
+                        <input type="text" id="title" name="title">
+                        <label for="author">What's your name, cutie:</label>
+                        <input type="text" id="author" name="author">
+                        <label for="wish">Your wish:</label>
+                        <textarea id="subject" name="subject" placeholder="Write something.."></textarea>
+                        <label for="image">Image</label>
+                        <input type="file" id="image" name="image" accept="image/*">
+                        <div class="row">
+                            <button class="btn" type="submit" id="modal-content__submit" value="Submit">Submit</button>
+                            <a class="btn btn-danger" id="modal-content__close">Close</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
             <div class="recipe">
                 <!-- <svg class="search__icon">
                     <use href="img/icons.svg#icon-magnifying-glass"></use>
@@ -78,12 +86,6 @@
             </div>
         </div>
     </div>
-        
-
-
-    
-        
-
 
     <div class="copyright">
         Created by Reuben Lee and Kevin Heng. Powered by Love.
