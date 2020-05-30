@@ -30,13 +30,13 @@
             
             <!-- Modal content -->
             <div class="modal-content">
-                <form action="https://bday-wish-api.herokuapp.com/api/list/" method="post">
+                <form onsubmit="return false">
                     <label for="title">Title of your Wish:</label>
                     <input type="text" id="title" name="title">
                     <label for="author">What's your name, cutie:</label>
                     <input type="text" id="author" name="author">
                     <label for="wish">Your wish:</label>
-                    <textarea id="subject" name="subject" placeholder="Write something.."></textarea>
+                    <textarea id="wish" name="wish" placeholder="Write something.."></textarea>
                     <label for="image">Image</label>
                     <input type="file" id="image" name="image" accept="image/*">
                     <div class="row">

@@ -1,5 +1,6 @@
 import '../css/style.css';
 import '../img/icons.svg';
+import axios from 'axios';
 
 
 // import { elements, renderLoader, clearLoader } from './views/base';
@@ -53,3 +54,43 @@ window.addEventListener('click', (event) => {
         el.modal.style.display = "none";
     }
 });
+
+el.submit.onclick = function() {
+    sub();
+}
+
+
+
+function sub() {
+    const formData = new FormData();
+    const data = getTextData();
+    console.log(data)
+    console.log(data.title)
+    formData.append('title', data.title);
+    formData.append('author', data.author);
+    formData.append('wish', data.wish);
+    console.log(formData)
+    try{
+      axios({
+        method: 'post',
+        url: 'https://bday-wish-api.herokuapp.com/api/list/',
+        data: formData,
+      })
+      alert('Form Submitted!')
+    } catch (error) {
+      alert(error);
+      console.log(error);
+    };
+  };
+
+  function getTextData() {
+    const obj = {
+        title: document.getElementById( "title" ).value,
+        author: document.getElementById( "author" ).value,
+        wish: document.getElementById( "wish" ).value,
+    }
+    
+    return obj
+  };
+
+const image = document.getElementById("image").value;
