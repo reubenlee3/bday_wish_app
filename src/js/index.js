@@ -1,5 +1,6 @@
 import '../css/style.css';
 import '../img/icons.svg';
+import axios from 'axios';
 
 
 // import { elements, renderLoader, clearLoader } from './views/base';
@@ -47,9 +48,69 @@ el.closeBtn.onclick = function() {
     el.modal.style.display = "none";
 };
 
-// When the user clicks anywhere outside of the modal, close it
+/* When the user clicks anywhere outside of the modal, close it
 window.addEventListener('click', (event) => {
     if (event.target == el.modal) {
         el.modal.style.display = "none";
     }
 });
+*/
+
+// Push form data when submit button is clicked
+el.submit.onclick = function() {
+    sub();
+}
+
+
+// Push form data
+function sub() {
+    const formData = prepForm();
+    
+    try{
+      axios({
+        method: 'post',
+        url: 'https://bday-wish-api.herokuapp.com/api/list/',
+        data: formData,
+      })
+      el.modal.style.display = "none";
+      alert('Form Submitted!')
+    } catch (error) {
+      alert(error);
+      console.log(error);
+    };
+};
+
+// Get text data from form inputs
+function getTextData() {
+    const obj = {
+        title: document.getElementById( "title" ).value,
+        author: document.getElementById( "author" ).value,
+        wish: document.getElementById( "wish" ).value,
+    }
+    
+    return obj
+};
+
+// Get image file from form inputs. Return false if no file attached
+function getImage() {
+    if (document.getElementById( "image" ).value !== "") {
+       return document.getElementById( "image" ); 
+    } else {
+        return false
+    }
+    
+}
+
+// Append formData for push
+function prepForm() {
+    const formData = new FormData();
+    const data = getTextData();
+    formData.append('title', data.title);
+    formData.append('author', data.author);
+    formData.append('wish', data.wish);
+    const imageFile = getImage();  
+    if (imageFile !== false) {
+        formData.append('image', imageFile.files[0]);
+    }
+    return formData;
+}
