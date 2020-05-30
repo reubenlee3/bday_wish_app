@@ -31,8 +31,11 @@ const el = {
     // Get the <span> element that closes the modal
     closeBtn: document.getElementById("modal-content__close"),
     // Get the submit element 
-    submit: document.getElementById("modal-content__submit")
-  
+    submit: document.getElementById("modal-content__submit"),
+    // Form inputs
+    title: document.getElementById( "title" ),
+    author: document.getElementById( "author" ),
+    wish: document.getElementById( "wish" ),
   }
   
   
@@ -74,6 +77,7 @@ function sub() {
       })
       el.modal.style.display = "none";
       alert('Form Submitted!')
+      clearInputs();
     } catch (error) {
       alert(error);
       console.log(error);
@@ -83,11 +87,14 @@ function sub() {
 // Get text data from form inputs
 function getTextData() {
     const obj = {
-        title: document.getElementById( "title" ).value,
-        author: document.getElementById( "author" ).value,
-        wish: document.getElementById( "wish" ).value,
+        title: el.title.value,
+        author: el.author.value,
+        wish: el.wish.value,
     }
-    
+    if(obj.title === "" || obj.author === "" || obj.wish === "") {
+        alert("Please fill all text boxes! (Image not required)")
+        return
+    }
     return obj
 };
 
@@ -113,4 +120,11 @@ function prepForm() {
         formData.append('image', imageFile.files[0]);
     }
     return formData;
+}
+
+// Clear input fields
+function clearInputs() {
+    el.title.value = "";
+    el.author.value = "";
+    el.wish.value = "";
 }
