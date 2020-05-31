@@ -6,12 +6,16 @@ import axios from 'axios';
 //  Model Imports
 import List from './models/List';
 import Post from './models/Post';
+import Search from './models/Search';
 
 // Views Imports
 import * as listView from './views/listView';
-import * as postView from './views/postView'
+import * as postView from './views/postView';
+import * as searchView from './views/searchView';
 
+// Base Imports
 import { el, renderLoader, clearLoader } from './views/base';
+
 
 
 const state = {}
@@ -20,6 +24,7 @@ const state = {}
  * Full List controller
  *****************************/
 
+// Get the full list of wishes 
 const controlList = async () => {
 
     state.list = new List();
@@ -40,14 +45,23 @@ const controlList = async () => {
     }
 };
 
-window.addEventListener('load', () => {
-    controlList();
-})
+/*****************************
+ * Search List controller
+ *****************************/
+
+
+
+
+
+
+
+
 
   
 /*****************************
  * Post form controller
  *****************************/
+
 // Push form data
 const controlPost = async () => {
     // Get text data
@@ -67,6 +81,9 @@ const controlPost = async () => {
         alert('Form Submitted!')
         postView.clearInputs();
         clearLoader();
+
+        // Render results again to show the new post
+        controlList();
         
     } catch (error) {
         alert(error);
@@ -101,5 +118,16 @@ el.submit.onclick = function() {
 }
 
 
+/*****************************
+ * Window Load controller
+ *****************************/
 
+// Load the full list when the page loads
+window.addEventListener('load', () => {
+    
+    // Load all wishes upon loading window
+    controlList();
+
+
+})
 
