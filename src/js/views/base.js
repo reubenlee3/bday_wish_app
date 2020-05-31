@@ -1,13 +1,15 @@
-export const elements = {
-    searchForm: document.querySelector('.search'),
-    searchInput: document.querySelector('.search__field'),
-    searchResultList: document.querySelector('.results__list'),
-    searchResult: document.querySelector('.results'),
-    searchResultPages: document.querySelector('.results__pages'),
-    recipe: document.querySelector('.recipe'),
-    shopping: document.querySelector('.shopping__list'),
-    likesMenu: document.querySelector('.likes__field'),
-    likesList: document.querySelector('.likes__list'),
+export const el = {
+    // Modal DOM elements
+    modal: document.getElementById("modal-content__body"),
+    modalContent: document.getElementById("modal-content"),
+    openModal: document.getElementById("modal-content__button"),
+    closeBtn: document.getElementById("modal-content__close"),
+    submit: document.getElementById("modal-content__submit"),
+    title: document.getElementById( "title" ),
+    author: document.getElementById( "author" ),
+    wish: document.getElementById( "wish" ),
+
+    // Search DOM elements
 }
 
 export const elementStrings = {

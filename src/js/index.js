@@ -2,45 +2,17 @@ import '../css/style.css';
 import '../img/icons.svg';
 import axios from 'axios';
 
-
-// import { elements, renderLoader, clearLoader } from './views/base';
-
-
-/** Global state of the app, will make other parts persistent
- * - Search object
- * - Current recipe object
- * - Shopping list object
- * - Liked recipes
- * ***/
-
- /*
- Search Controller
- */
-
-// const state = {}
+import { el, renderLoader, clearLoader } from './views/base';
 
 
+const state = {}
 
-
-// Modal pop up form
-const el = {
-    // Get the modal
-    modal: document.getElementById("modal-content__body"),
-    // Get the button that opens the modal
-    openModal: document.getElementById("modal-content__button"),
-    // Get the <span> element that closes the modal
-    closeBtn: document.getElementById("modal-content__close"),
-    // Get the submit element 
-    submit: document.getElementById("modal-content__submit"),
-    // Form inputs
-    title: document.getElementById( "title" ),
-    author: document.getElementById( "author" ),
-    wish: document.getElementById( "wish" ),
-  }
-  
-  
 
   
+/*****************************
+ * Post form controller
+ *****************************/
+
 // When the user clicks on the button, open the modal (display of modal from none to block)
 el.openModal.addEventListener('click', () => {
     el.modal.style.display = "block";
@@ -68,19 +40,27 @@ el.submit.onclick = function() {
 // Push form data
 async function sub() {
     const formData = prepForm();
-    
-    try{
-      await axios({
-        method: 'post',
-        url: 'https://bday-wish-api.herokuapp.com/api/list/',
-        data: formData,
-      })
-      el.modal.style.display = "none";
-      alert('Form Submitted!')
-      clearInputs();
+    renderLoader(el.modalContent);
+
+    try {
+
+        await axios({
+            method: 'post',
+            url: 'https://bday-wish-api.herokuapp.com/api/list/',
+            data: formData,
+        })
+
+        el.modal.style.display = "none";
+        alert('Form Submitted!')
+        clearInputs();
+        clearLoader();
+        
     } catch (error) {
-      alert(error);
-      console.log(error);
+
+        alert(error);
+        clearLoader();
+        console.log(error);
+
     };
 };
 
