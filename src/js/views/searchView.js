@@ -1,22 +1,22 @@
-import { elements } from './base';
+import { el } from './base';
 
 export const clearInput = () => {
-    elements.searchInput.value = '';
+    el.searchInput.value = '';
 };
 
 export const clearResults = () => {
-    elements.searchResultList.innerHTML = '';
-    elements.searchResultPages.innerHTML = '';
+    el.searchResultList.innerHTML = '';
+    el.searchResultPages.innerHTML = '';
 };
 
-export const highlightSelected = id => {
-    const resultsArr = Array.from(document.querySelectorAll('.results__link'));
-    resultsArr.forEach(el => el.classList.remove('results__link--active'));
-    document.querySelector(`.results__link[href*="#${id}"]`).classList.add('results__link--active');
-}
+// export const highlightSelected = id => {
+//     const resultsArr = Array.from(document.querySelectorAll('.results__link'));
+//     resultsArr.forEach(el => el.classList.remove('results__link--active'));
+//     document.querySelector(`.results__link[href*="#${id}"]`).classList.add('results__link--active');
+// }
 
 
-export const getInput = () => elements.searchInput.value;
+export const getInput = () => el.searchInput.value;
 
 /* Basic working:
  * - take each title
@@ -52,7 +52,7 @@ const renderRecipe = recipe => {
         </a>
     </li>
     `;
-    elements.searchResultList.insertAdjacentHTML('beforeend', markup)
+    el.searchResultList.insertAdjacentHTML('beforeend', markup)
 }
 
 const createPageButton = (page, type) => `
@@ -81,7 +81,7 @@ const renderButtons = (page, numResults, resPerPage) => {
     } else if (page === pages && pages > 1) {
         button = createPageButton(page, 'prev');
     }
-    elements.searchResultPages.insertAdjacentHTML('beforeend', button);
+    el.searchResultPages.insertAdjacentHTML('beforeend', button);
 };
 
 

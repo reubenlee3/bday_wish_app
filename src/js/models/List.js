@@ -9,8 +9,7 @@ export default class List {
         try {
             
             const res = await axios(`https://bday-wish-api.herokuapp.com/api/list/`);
-            this.result = res.data;
-            console.log(this.result);
+            this.result = res.data.reverse();
 
         } catch(error) {
 
