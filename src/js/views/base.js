@@ -10,6 +10,8 @@ export const el = {
     wish: document.getElementById( "wish" ),
 
     // Search DOM elements
+    wishList: document.querySelector('.wish-content__list'),
+    wishContent: document.querySelector('.wish-content'),
 }
 
 export const elementStrings = {
@@ -18,6 +20,7 @@ export const elementStrings = {
 
 
 export const renderLoader = parent => {
+    console.log(el)
     const loader = `
         <div class="${elementStrings.loader}">
             <svg>

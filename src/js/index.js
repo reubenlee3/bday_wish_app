@@ -2,11 +2,44 @@ import '../css/style.css';
 import '../img/icons.svg';
 import axios from 'axios';
 
+//  Model Imports
+import List from './models/List';
+
+// Views Imports
+import * as listView from './views/listView';
+
 import { el, renderLoader, clearLoader } from './views/base';
 
 
 const state = {}
 
+/*****************************
+ * Full List controller
+ *****************************/
+
+const controlList = async () => {
+
+    state.list = new List();
+
+    renderLoader(el.wishContent);
+
+    try {
+
+        await state.list.getFullList();
+        clearLoader();
+        listView.renderWishList(state.list.result);
+    } 
+
+    catch(error) {
+        alert('Somethign went wrong');
+        console.log(error)
+        clearLoader();
+    }
+};
+
+window.addEventListener('load', () => {
+    controlList();
+})
 
   
 /*****************************
