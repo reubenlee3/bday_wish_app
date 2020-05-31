@@ -66,11 +66,11 @@ el.submit.onclick = function() {
 
 
 // Push form data
-function sub() {
+async function sub() {
     const formData = prepForm();
     
     try{
-      axios({
+      await axios({
         method: 'post',
         url: 'https://bday-wish-api.herokuapp.com/api/list/',
         data: formData,

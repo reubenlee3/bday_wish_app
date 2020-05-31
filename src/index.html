@@ -23,38 +23,6 @@
             </button>
         </form>
     </header> -->
-
-<<<<<<< HEAD
-    
-    
-=======
-        <button class="btn" id="modal-content__button">Open Modal</button>
-
-        <!-- The Modal -->
-        <div id="modal-content__body" class="modal">
-            
-            <!-- Modal content -->
-            <div class="modal-content">
-                <form onsubmit="return false">
-                    <label for="title">Title of your Wish:</label>
-                    <input type="text" id="title" name="title">
-                    <label for="author">What's your name, cutie:</label>
-                    <input type="text" id="author" name="author">
-                    <label for="wish">Your wish:</label>
-                    <textarea id="wish" name="wish" placeholder="Write something.."></textarea>
-                    <label for="image">Image</label>
-                    <input type="file" id="image" name="image" accept="image/*">
-                    <div class="row">
-                        <button class="btn" type="submit" id="modal-content__submit" value="Submit">Submit</button>
-                        <a class="btn btn-danger" id="modal-content__close">Close</a>
-                    </div>
-                    
-                </form>
-            </div>
-
-        </div>
-    </header>
->>>>>>> 1757acbee8577f013b7a88da18b314a88ab22d0f
     
 
     <div class="main-body">
@@ -83,19 +51,19 @@
         </div>
         
         <div class="container big">
-            <button class="btn" id="modal-content__button">Write your wish!</button>
-
-            <!-- The Modal -->
+            <button class="btn" id="modal-content__button">Open Modal</button>
+            
             <div id="modal-content__body" class="modal">
+                
                 <!-- Modal content -->
                 <div class="modal-content">
-                    <form action="https://bday-wish-api.herokuapp.com/api/list/" method="post">
+                    <form onsubmit="return false">
                         <label for="title">Title of your Wish:</label>
                         <input type="text" id="title" name="title">
                         <label for="author">What's your name, cutie:</label>
                         <input type="text" id="author" name="author">
                         <label for="wish">Your wish:</label>
-                        <textarea id="subject" name="subject" placeholder="Write something.."></textarea>
+                        <textarea id="wish" name="wish" placeholder="Write something.."></textarea>
                         <label for="image">Image</label>
                         <input type="file" id="image" name="image" accept="image/*">
                         <div class="row">
@@ -105,6 +73,7 @@
                     </form>
                 </div>
             </div>
+
             <div class="recipe">
                 <!-- <svg class="search__icon">
                     <use href="img/icons.svg#icon-magnifying-glass"></use>
