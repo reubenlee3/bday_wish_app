@@ -65,13 +65,14 @@ body {
 .container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
   background: #ffffff;
   padding: 20px;
   border: 1px solid #dddddd;
   height: 100%;
   width: 100%;
+  overflow: auto;
   /* grid-template-rows: 10rem minmax(100rem, auto);
   grid-template-columns: 1.1fr 2fr;
   grid-template-areas: "head head head" "list recipe shopping";  */
@@ -219,6 +220,55 @@ body {
     .search__field::placeholder {
       color: #DAD0CC; }
 
+/* Full List Contents */
+.wish-content {
+  margin-top: 10px;
+ }
+  .wish-content__list{
+    list-style: none;
+    font-size: 1.4rem;
+    transition: all .3s;
+  }
+  .wish-content__list li{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-top: 0.5px solid #78909c;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .wish-content__link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+  }
+  .wish-content__link:link,
+  .wish-content__link:visited {
+    text-decoration: none;
+    color: inherit;
+   }
+  .wish-content__link--active {
+    background-color: #F9F5F3; }
+  .wish-content__img, img {
+    height: auto;
+    max-width: 30%; 
+    margin-right: 2rem;
+    /* backface-visibility: hidden;  */
+  }
+  .wish-content__data {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  @media (max-width: 600px) {
+    .wish-content__list li{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  }
 
 /* The Modal (background) */
 .modal {
