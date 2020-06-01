@@ -340,3 +340,73 @@ body {
   text-decoration: none;
   cursor: pointer;
 }
+
+/* Load Screen */
+@import url('https://fonts.googleapis.com/css?family=Raleway:200,100,400'); /* import font */
+
+#load_screen{
+  background: #333 url('../img/loading.jpeg') no-repeat center center / cover;  /* import background */
+  opacity: 1;
+  position: fixed;
+  z-index:10 ;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  font-family: 'Raleway', sans-serif;
+  color: #333;  /* font color */
+  overflow:hidden;
+}
+
+#load_screen>#loading {
+  display: flex;
+  flex-direction: column;  /* change the flex direction to vertical */
+  justify-content: center;
+  height: 100%;
+  padding: 0 3rem 15rem;
+}
+
+h1 /*,h2*/ {
+  font-weight: 500;
+  margin: 0.4rem;
+}
+
+h1 {
+  font-size: 3.5rem;
+}
+/*
+h2 {
+  font-size: 2rem;
+  color: #aaa;
+}
+*/
+/* Cursor */
+.txt-type > .txt {
+  border-right: 0.2rem solid #777;
+}
+
+@media(min-width: 1200px) {
+  h1 {
+    font-size: 5rem;
+  }
+}
+
+@media(max-width: 800px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+}
+
+@media(max-width: 500px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+  /*
+  h2 {
+    font-size: 1.5rem;
+  }
+  */
+}

@@ -1,5 +1,6 @@
 import '../css/style.css';
 import '../img/icons.svg';
+import '../img/loading.jpeg';
 import axios from 'axios';
 
 
@@ -7,14 +8,20 @@ import axios from 'axios';
 import List from './models/List';
 import Post from './models/Post';
 import Search from './models/Search';
+import Loading from './models/Loading';
 
 // Views Imports
 import * as listView from './views/listView';
 import * as postView from './views/postView';
 import * as searchView from './views/searchView';
+import * as loadingView from './views/loadingView';
 
 // Base Imports
 import { el, renderLoader, clearLoader } from './views/base';
+import { setTimeout } from 'core-js';
+
+
+
 
 
 
@@ -122,12 +129,23 @@ el.submit.onclick = function() {
  * Window Load controller
  *****************************/
 
+// Init on Dom load
+document.addEventListener('DOMContentLoaded', init);
+
+// Init App
+function init() {
+    const txtElement = document.querySelector('.txt-type');
+    const words = JSON.parse(txtElement.getAttribute('data-words'));
+    const wait = txtElement.getAttribute('data-wait');
+    // Init TypeWriter
+    new Loading(txtElement, words, wait);
+  }
+ // Remove load screen
+setTimeout(function(){loadingView.removeLoad(); }, 10500);
 // Load the full list when the page loads
 window.addEventListener('load', () => {
-    
     // Load all wishes upon loading window
     controlList();
 
 
 })
-
