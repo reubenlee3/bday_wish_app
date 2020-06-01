@@ -9,9 +9,15 @@ export const el = {
     author: document.getElementById( "author" ),
     wish: document.getElementById( "wish" ),
 
-    // Search DOM elements
+    // Wish list DOM elements
     wishList: document.querySelector('.wish-content__list'),
     wishContent: document.querySelector('.wish-content'),
+
+    // Search list DOM elements
+    searchList: document.querySelector('.search-content__list'),
+    searchContent: document.querySelector('.search-content'),
+    searchBtn: document.querySelector('.search__btn'),
+    searchInput: document.querySelector('.search__field'),
 }
 
 export const elementStrings = {
@@ -20,7 +26,7 @@ export const elementStrings = {
 
 
 export const renderLoader = parent => {
-    console.log(el)
+    
     const loader = `
         <div class="${elementStrings.loader}">
             <svg>
@@ -36,4 +42,9 @@ export const clearLoader = () => {
     if (loader) {
         loader.parentElement.removeChild(loader)
     }
+}
+
+export const resetViews = () => {
+    el.searchContent.innerHTML = '';
+    el.wishContent.innerHTML = '';
 }

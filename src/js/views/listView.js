@@ -7,6 +7,10 @@ export const renderWishList = (wishArr) => {
     
 }
 
+export const clearList = () => {
+    el.wishList.innerHTML = '';
+};
+
 const renderWish = (wish) => {
     const markup = `
     <li>
@@ -23,3 +27,4 @@ const renderWish = (wish) => {
     el.wishList.insertAdjacentHTML('beforeend', markup);
 
 };
+

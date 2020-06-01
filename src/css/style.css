@@ -68,14 +68,11 @@ body {
   /* justify-content: space-between; */
   align-items: center;
   background: #ffffff;
-  padding: 20px;
+  padding: 20px 0px;
   border: 1px solid #dddddd;
   height: 100%;
   width: 100%;
   overflow: auto;
-  /* grid-template-rows: 10rem minmax(100rem, auto);
-  grid-template-columns: 1.1fr 2fr;
-  grid-template-areas: "head head head" "list recipe shopping";  */
 }
   .container.small {
     flex-basis: 30%;
@@ -89,6 +86,7 @@ body {
       flex-direction: column;
     } 
   }
+
 
 .row {
   display: flex;
@@ -220,7 +218,10 @@ body {
     .search__field::placeholder {
       color: #DAD0CC; }
 
-/* Full List Contents */
+
+/*************************
+Full List Contents 
+*************************/
 .wish-content {
   margin-top: 10px;
  }
@@ -230,10 +231,10 @@ body {
     transition: all .3s;
   }
   .wish-content__list li{
-    margin-top: 20px;
+    margin-top: 10px;
     margin-bottom: 10px;
-    padding: 20px;
-    border-top: 0.5px solid #78909c;
+    padding: 20px 40px;
+    border-bottom: 0.5px solid #78909c;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -271,7 +272,66 @@ body {
     }
   }
 
-/* The Modal (background) */
+
+
+/*************************
+Search List Contents 
+*************************/
+.search-content {
+  margin-top: 10px;
+  /* background-color: #eceff1; */
+ }
+  .search-content__list{
+    list-style: none;
+    font-size: 1.2rem;
+    transition: all .3s;
+  }
+  .search-content__list li{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  .search-content__link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    /* justify-content: space-between; */
+  }
+  .search-content__link:link,
+  .search-content__link:visited {
+    text-decoration: none;
+    color: inherit;
+   }
+  .search-content__link--active {
+    background-color: #F9F5F3; }
+  .search-content__img, img {
+    width: 20%;
+    height: auto;
+    margin-right: 2rem;
+  }
+  .search-content__data {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  @media (max-width: 600px) {
+    .search-content__list li{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  }
+
+
+
+/*************************
+The Modal (background) 
+*************************/
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */

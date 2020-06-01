@@ -5,8 +5,7 @@ export const clearInput = () => {
 };
 
 export const clearResults = () => {
-    el.searchResultList.innerHTML = '';
-    el.searchResultPages.innerHTML = '';
+    el.searchList.innerHTML = '';
 };
 
 // export const highlightSelected = id => {
@@ -16,7 +15,7 @@ export const clearResults = () => {
 // }
 
 
-export const getInput = () => el.searchInput.value;
+export const getSearchInput = () => el.searchInput.value;
 
 /* Basic working:
  * - take each title
@@ -24,7 +23,7 @@ export const getInput = () => el.searchInput.value;
  * - count to see if they exceed the line title
  * - use reduce cos it has an inbuilt acc value
  */ 
-export const limitRecipeTitle = (title, limit= 20) => {
+export const limitTitle = (title, limit= 15) => {
     const newTitle = [];
     if (title.length > limit) {
         title.split(' ').reduce( (acc, val) => {
@@ -38,60 +37,65 @@ export const limitRecipeTitle = (title, limit= 20) => {
     return title;
 };
 
-const renderRecipe = recipe => {
+const renderSearchSucc = (searchItems) => {
     const markup = `
     <li>
-        <a class="results__link" href="#${recipe.recipe_id}">
-            <figure class="results__fig">
-                <img src="${recipe.image_url}" alt=${recipe.title}>
-            </figure>
-            <div class="results__data">
-                <h4 class="results__name">${limitRecipeTitle(recipe.title)}</h4>
-                <p class="results__author">${recipe.publisher}</p>
+        <a class="search-content__link" href="#${searchItems.id}">
+            <img class="search-content__img" src="${searchItems.image}" alt="${searchItems.title}">
+            <div class="search-content__data">
+                <h4 class="search-content__title">${limitTitle(searchItems.title)}</h4>
+                <p class="search-content__author">${searchItems.author}</p>
             </div>
         </a>
     </li>
     `;
-    el.searchResultList.insertAdjacentHTML('beforeend', markup)
-}
+    el.searchList.insertAdjacentHTML('beforeend', markup);
+};
 
-const createPageButton = (page, type) => `
-    <button class="btn-inline results__btn--${type}" data-goto=${type === 'prev' ? page - 1 : page + 1}>
-        <svg class="search__icon">
-            <use href="img/icons.svg#icon-triangle-${type === 'prev' ? 'left' : 'right'}"></use>
-        </svg>
-        <span>Page ${type === 'prev' ? page - 1 : page + 1}</span>
-    </button>
-`
-
-
-const renderButtons = (page, numResults, resPerPage) => {
-    const pages = Math.ceil(numResults / resPerPage);
-
-    let button;
-    if (page === 1 && pages > 1) {
-        // button go to next page
-        button = createPageButton(page, 'next');
-    } else if (page < pages) {
-        // both buttons
-        button = `
-            ${createPageButton(page, 'prev')}
-            ${createPageButton(page, 'next')}
-        `;
-    } else if (page === pages && pages > 1) {
-        button = createPageButton(page, 'prev');
-    }
-    el.searchResultPages.insertAdjacentHTML('beforeend', button);
+const renderSearchNull = () => {
+    const markup = `
+    <li>
+        <a class="search-content__link">
+            <div class="search-content__data">
+                <h3 class="search-content__title">Your search returned no results</h3>
+            </div>
+        </a>
+    </li>
+    `;
+    el.searchList.insertAdjacentHTML('beforeend', markup);
 };
 
 
-export const renderResults = (recipes, page = 1, resPerPage = 10) => {
-    // render results of current page
-    const start = (page - 1) * resPerPage;
-    const end = page * resPerPage;
+export const renderSearchResults = (searchArr) => {
 
-    recipes.slice(start, end).forEach(renderRecipe);
+    // insert search results into search-content body
+    if (searchArr.length === 0) {
+        renderSearchNull();
+    } else {
+        searchArr.forEach(renderSearchSucc);
+    };
     
-    // render pagination buttons
-    renderButtons(page, recipes.length, resPerPage);
 }
+
+// Render a specified search item onto the wish body
+const renderSearchItem = (searchItem) => {
+    const markup = `
+    <li>
+        <a class="wish-content__link" href="#${searchItem.id}">
+            <img class="wish-content__img" src="${searchItem.image}" alt="${searchItem.title}">
+            <div class="wish-content__data">
+                <h3 class="wish-content__title">${searchItem.title}</h4>
+                <p class="wish-content__author">${searchItem.author}</p>
+                <p class="wish-content__wish">${searchItem.wish}</p>
+            </div>
+        </a>
+    </li>
+    `;
+    el.wishList.insertAdjacentHTML('beforeend', markup);
+};
+
+export const renderSingleSearch = (search) => {
+
+    renderSearchItem(search);
+
+};
