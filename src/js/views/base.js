@@ -23,6 +23,9 @@ export const el = {
     // Load screen
     loadScreen: document.getElementById("load_screen"),
 
+    // Reset 
+    resetBtn: document.getElementById('reset__button'),
+
 }
 
 export const elementStrings = {

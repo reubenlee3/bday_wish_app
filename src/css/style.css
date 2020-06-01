@@ -19,6 +19,10 @@ html {
       font-size: 50%; } 
   }
 
+h2 {
+  font-size: 2rem;
+}
+
 body {
   height: 100%;
   display: flex;
@@ -85,6 +89,10 @@ body {
       padding: 20px 50px;
       flex-direction: column;
     } 
+    .container.big,
+    .container.small {
+      padding: 15px 0px;
+    }
   }
 
 
@@ -94,8 +102,14 @@ body {
   flex-wrap: wrap;
 }
   
+.btn-group {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-.btn, .btn-small, .btn-small:link, .btn-small:visited {
+.btn, .btn-small {
   background-color: #3bd6c6;
   border-radius: 10rem;
   border: none;
@@ -105,12 +119,10 @@ body {
   display: flex;
   align-items: center;
   transition: all .2s; }
-  .btn:hover, .btn-small:hover {
+  .btn:hover {
     transform: scale(1.05); }
-  .btn:focus, .btn-small:focus {
+  .btn:focus {
     outline: none; }
-  .btn > *:first-child, .btn-small > *:first-child {
-    margin-right: 1rem; }
 
 .btn {
   padding: 15px 30px;
@@ -120,14 +132,6 @@ body {
     width: 2.25rem;
     fill: currentColor; }
 
-.btn-small, .btn-small:link, .btn-small:visited {
-  font-size: 1.3rem;
-  padding: 1rem 1.75rem;
-  text-decoration: none; }
-  .btn-small svg, .btn-small:link svg, .btn-small:visited svg {
-    height: 1.5rem;
-    width: 1.5rem;
-    fill: currentColor; }
 
 .btn-danger {
   background-color: #EF9A9A;
@@ -192,6 +196,15 @@ body {
     height: 4.5rem;
     display: block; }
 
+
+textarea {
+  min-height: 150px;
+}
+
+/*************************
+Search List Contents 
+*************************/
+
 .search {
   background-color: #fff;
   border: 2px solid #3bd6c6;
@@ -234,9 +247,10 @@ Full List Contents
 
     margin-top: 0px;
     margin-bottom: 0px;
-    padding: 20px;
-    border-top: 0.5px solid #78909c;
-
+    padding: 15px;
+    border-bottom: 0.5px solid #78909c;
+    cursor: auto;
+    transition: 0.4s ease-in-out;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -246,10 +260,12 @@ Full List Contents
     display: flex;
     align-items: center;
     width: 100%;
+    padding: 20px;
+    
     /* justify-content: space-between; */
   }
   .wish-content__list li:hover {
-    background-color: #E5E7E9;
+    background-color: #eceff1;
   }
   .wish-content__link:link,
   .wish-content__link:visited {

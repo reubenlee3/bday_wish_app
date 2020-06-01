@@ -68,12 +68,10 @@ const controlList = async () => {
 const controlSearch = async () => {
     // 1. Get query from view
     const query = searchView.getSearchInput();
-    console.log(query)
 
     if (query) {
         // 2. new search object and add to state 
         state.search = new Search(query);
-        console.log(state.search)
 
         // 3. Prepare UI for results
         searchView.clearInput();
@@ -83,7 +81,6 @@ const controlSearch = async () => {
         try {
             // 4. Search for recipes
             await state.search.getResults();
-            console.log(state.search.result)
 
             // 5. render results on UI
             clearLoader();
@@ -174,7 +171,6 @@ const controlPost = async () => {
     } catch (error) {
         alert(error);
         clearLoader();
-        console.log(error);
 
     };
 };
@@ -211,7 +207,30 @@ el.submit.onclick = function() {
 
 // Reset View 
 
+const resetList = () => {
 
+    // clear the wish contents
+    listView.clearList();
+
+    // render the loader
+    renderLoader(el.wishContent);
+
+    // get full list of wishes
+    try {
+
+        // get the search item data
+        controlList();
+
+        clearLoader();
+
+    }
+
+    catch {
+        alert('Something went wrong, could you try again?')
+    }
+};
+
+el.resetBtn.addEventListener('click', resetList);
 
 
 
@@ -235,6 +254,5 @@ setTimeout(function(){loadingView.removeLoad(); }, 10500);
 window.addEventListener('load', () => {
     // Load all wishes upon loading window
     controlList();
-
 
 })
