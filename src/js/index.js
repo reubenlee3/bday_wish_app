@@ -7,8 +7,10 @@ import axios from 'axios';
 //  Model Imports
 import List from './models/List';
 import Post from './models/Post';
-import Search from './models/Search';
+
+import { Search, SearchItem } from './models/Search';
 import Loading from './models/Loading';
+
 
 // Views Imports
 import * as listView from './views/listView';
@@ -25,7 +27,7 @@ import { setTimeout } from 'core-js';
 
 
 
-const state = {}
+const state = {};
 
 /*****************************
  * Full List controller
@@ -39,10 +41,16 @@ const controlList = async () => {
     renderLoader(el.wishContent);
 
     try {
-
+        // Retrive search results
         await state.list.getFullList();
+
+        // Prepare UI
+        listView.clearList();
         clearLoader();
+
+        // Render wishes on to wish body
         listView.renderWishList(state.list.result);
+
     } 
 
     catch(error) {
@@ -56,9 +64,80 @@ const controlList = async () => {
  * Search List controller
  *****************************/
 
+// Function for the search body
+const controlSearch = async () => {
+    // 1. Get query from view
+    const query = searchView.getSearchInput();
+    console.log(query)
+
+    if (query) {
+        // 2. new search object and add to state 
+        state.search = new Search(query);
+        console.log(state.search)
+
+        // 3. Prepare UI for results
+        searchView.clearInput();
+        searchView.clearResults();
+        renderLoader(el.searchContent);
+
+        try {
+            // 4. Search for recipes
+            await state.search.getResults();
+            console.log(state.search.result)
+
+            // 5. render results on UI
+            clearLoader();
+            searchView.renderSearchResults(state.search.result);
+
+        } catch {
+            alert('Somethign went wrong');
+            clearLoader();
+        }
+    }
+};
+
+// Function to display search result when clicked on
+const controlSearchItem = async () => {
+
+    // Retrieve id from the nav bar
+    const id = window.location.hash.replace('#', '');
+
+    if (id) {
+
+        // Prep UI for changes
+        listView.clearList();
+        renderLoader(el.wishContent); 
+
+        // create new search item object
+        state.searchItem = new SearchItem(id);
+
+        try {
+
+            // get the search item data
+            await state.searchItem.getResults();
+
+            // Put new search item into UI
+            clearLoader();
+            searchView.renderSingleSearch(state.searchItem);
+
+        }
+
+        catch {
+            alert('Something went wrong, could you try again?')
+        }
+
+    }
 
 
+};
 
+['hashchange', 'load'].forEach(event => window.addEventListener(event, controlSearchItem));
+
+// Search button hit
+el.searchBtn.addEventListener('click', (event) => {
+    event.preventDefault();
+    controlSearch();
+});
 
 
 
@@ -126,8 +205,17 @@ el.submit.onclick = function() {
 
 
 /*****************************
- * Window Load controller
+ * Window controller
  *****************************/
+
+
+// Reset View 
+
+
+
+
+
+
 
 // Init on Dom load
 document.addEventListener('DOMContentLoaded', init);
@@ -142,6 +230,7 @@ function init() {
   }
  // Remove load screen
 setTimeout(function(){loadingView.removeLoad(); }, 10500);
+
 // Load the full list when the page loads
 window.addEventListener('load', () => {
     // Load all wishes upon loading window
