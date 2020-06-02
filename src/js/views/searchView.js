@@ -85,7 +85,7 @@ const renderSearchItem = (searchItem) => {
             <img class="wish-content__img" src="${searchItem.image}" alt="${searchItem.title}">
             <div class="wish-content__data">
                 <h3 class="wish-content__title">${searchItem.title}</h4>
-                <p class="wish-content__author">${searchItem.author}</p>
+                <p class="wish-content__author"><i>${searchItem.author}</i></p>
                 <p class="wish-content__wish">${searchItem.wish}</p>
             </div>
         </a>
