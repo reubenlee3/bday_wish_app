@@ -11,7 +11,7 @@ html {
   box-sizing: border-box;
   height: 100%;
   width: 100%;
-  font-size: 80%;
+  font-size: 60%;
 }
   
   @media only screen and (max-width: 600px) {
@@ -378,7 +378,25 @@ The Modal (background)
   border-radius: 20px;
   width: 60%; 
 }
-  .modal-content input[type=text], input[type=file], textarea {
+.modal-content form {
+  width: 90%; 
+}
+
+  .modal-content__field {
+    /* width: 100%;
+    height: calc(1.5em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5; */
+    display: block;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+  .modal-content__field input[type=text], input[type=file], textarea {
     width: 100%; /* Full width */
     padding: 12px; /* Some padding */ 
     border: 1px solid #ccc; /* Gray border */
@@ -388,7 +406,7 @@ The Modal (background)
     margin-bottom: 16px; /* Bottom margin */
     resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
   }
-  .modal-content input[type=submit] {
+  .modal-content__field input[type=submit] {
     text-align: center;
     margin-top: 6px;
     margin-bottom: 16px; 

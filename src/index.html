@@ -13,13 +13,13 @@
 
 <body>
     <!-- comment this loading page out first -->
-    <!-- <div id="load_screen">
+    <div id="load_screen">
         <div id="loading">
             <h1> 
                 <span class="txt-type" data-wait="3000" data-words='["Happy Birthday Beautiful!"]'></span>
             </h1>
         </div>
-    </div> -->
+    </div>
     
 
     <div class="main-body">
@@ -61,14 +61,22 @@
                 <!-- Modal content -->
                 <div class="modal-content" id="modal-content">
                     <form onsubmit="return false">
-                        <label for="title">Title of your Wish:</label>
-                        <input type="text" id="title" name="title">
-                        <label for="author">What's your name, cutie:</label>
-                        <input type="text" id="author" name="author">
-                        <label for="wish">Your wish:</label>
-                        <textarea id="wish" name="wish" placeholder="Write something.."></textarea>
-                        <label for="image">Image</label>
-                        <input type="file" id="image" name="image" accept="image/*">
+                        <div class="modal-content__field">
+                            <label for="title">Title of your Wish:</label>
+                            <input type="text" id="title" name="title">
+                        </div>
+                        <div class="modal-content__field">
+                            <label for="author">What's your name, cutie:</label>
+                            <input type="text" id="author" name="author">
+                        </div>
+                        <div class="modal-content__field">
+                            <label for="wish">Your wish:</label>
+                            <textarea id="wish" name="wish" placeholder="Write something.."></textarea>
+                        </div>
+                        <div class="modal-content__field">
+                            <label for="image">Image</label>
+                            <input type="file" id="image" name="image" accept="image/*">
+                        </div>
                         <div class="row">
                             <button class="btn" type="submit" id="modal-content__submit" value="Submit">Submit</button>
                             <a class="btn btn-danger" id="modal-content__close">Close</a>

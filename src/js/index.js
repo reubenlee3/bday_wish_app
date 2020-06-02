@@ -211,6 +211,7 @@ const resetList = () => {
 
     // clear the wish contents
     listView.clearList();
+    searchView.clearResults();
 
     // render the loader
     renderLoader(el.wishContent);
