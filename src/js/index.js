@@ -1,6 +1,7 @@
 import '../css/style.css';
 import '../img/icons.svg';
 import '../img/loading.jpeg';
+import '../img/dessert.png';
 import axios from 'axios';
 
 
