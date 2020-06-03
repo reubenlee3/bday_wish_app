@@ -26,6 +26,10 @@ export const el = {
     // Reset 
     resetBtn: document.getElementById('reset__button'),
 
+    // Information modal
+    modalInfo: document.getElementById('modal-info'),
+    modalInfoClose: document.getElementById('modal-info__close'),
+
 }
 
 export const elementStrings = {

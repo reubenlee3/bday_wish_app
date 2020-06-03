@@ -205,6 +205,13 @@ el.submit.onclick = function() {
  * Window controller
  *****************************/
 
+// Information modal
+
+
+el.modalInfoClose.onclick = function() {
+    el.modalInfo.style.display = "none";
+};
+
 
 // Reset View 
 
@@ -254,7 +261,13 @@ setTimeout(function(){loadingView.removeLoad(); }, 10500);
 
 // Load the full list when the page loads
 window.addEventListener('load', () => {
+    
+    // Load the information modal
+    el.modalInfo.style.display = "block";
+
     // Load all wishes upon loading window
     controlList();
+
+    // 
 
 })

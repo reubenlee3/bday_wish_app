@@ -125,8 +125,8 @@ body {
     outline: none; }
 
 .btn {
-  padding: 15px 30px;
-  font-size: 1.4rem; }
+  padding: 15px 20px;
+  font-size: 1.2rem; }
   .btn svg {
     height: 2.25rem;
     width: 2.25rem;
@@ -369,6 +369,7 @@ The Modal (background)
 /* Modal Content/Box */
 .modal-content {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: #fefefe;
@@ -377,6 +378,16 @@ The Modal (background)
   border: 1px solid #888;
   border-radius: 20px;
   width: 60%; 
+  font-size: 1.2rem;
+}
+.modal-content h2,
+.modal-content p,
+.modal-content ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 90%; 
+  font-size: 1.2rem;
 }
 .modal-content form {
   width: 90%; 
