@@ -208,9 +208,9 @@ el.submit.onclick = function() {
 // Information modal
 
 
-el.modalInfoClose.onclick = function() {
-    el.modalInfo.style.display = "none";
-};
+// el.modalInfoClose.onclick = function() {
+//     el.modalInfo.style.display = "none";
+// };
 
 
 // Reset View 
@@ -263,7 +263,7 @@ setTimeout(function(){loadingView.removeLoad(); }, 10500);
 window.addEventListener('load', () => {
     
     // Load the information modal
-    el.modalInfo.style.display = "block";
+    // el.modalInfo.style.display = "block";
 
     // Load all wishes upon loading window
     controlList();
